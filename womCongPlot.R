@@ -8,7 +8,7 @@ womCongLong = data.frame(congNo = rep(seq(1:116), times=3), percent = dat, type 
 
 womCongLong$type = factor(womCongLong$type, levels = c('Men', 'Republican women', 'Democratic women'))
 
- an = ggplot(womCongLong, aes(congNo, percent, fill = type)) + geom_area(position = 'stack')+ scale_fill_manual(values=c('#e0e0e0', '#b2182b', '#2166ac')) + labs(y = 'Proportion of Congressional seats', x='Congress #') + theme_bw() + theme(legend.title=element_blank()) +theme(text = element_text(size=26)) + transition_reveal(congNo, keep_last = TRUE)
+an = ggplot(womCongLong, aes(congNo, percent, fill = type)) + geom_area(position = 'stack', alpha = 0.7)+ scale_fill_manual(values=c('#e0e0e0', '#b2182b', '#2166ac')) + labs(y = 'Proportion of Congressional seats', x='Congress #') + theme_minimal() + theme(legend.title=element_blank()) +theme(text = element_text(size=26)) + guides(fill=guide_legend(keyheight=0.4, default.unit="inch")) +  transition_reveal(congNo, keep_last = TRUE) + enter_fade()
 
-animate(an, height = 700, width =1100)
-anim_save("womCong.gif")
+animate(an, height = 700, width =1100, end_pause = 6, fps = 15)
+anim_save("womenCongress.gif")
